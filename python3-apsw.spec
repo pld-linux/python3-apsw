@@ -8,19 +8,19 @@
 Summary:	Another Python SQLite Wrapper
 Summary(pl.UTF-8):	Another Python SQLite Wrapper - jeszcze jeden pythonowy wrapper dla SQLite
 Name:		python3-%{module}
-Version:	3.38.5
-Release:	4
+Version:	3.49.1.0
+Release:	1
 License:	Free
 Group:		Libraries/Python
-Source0:	https://github.com/rogerbinns/apsw/archive/%{version}-r1.tar.gz
-# Source0-md5:	a860b99c71b1dda34634cdaec97dff65
+Source0:	https://github.com/rogerbinns/apsw/releases/download/%{version}/%{module}-%{version}.tar.gz
+# Source0-md5:	7cbb9dc1029b29511e00a6f10eea3e69
 URL:		http://rogerbinns.github.io/apsw/
-BuildRequires:	rpmbuild(macros) >= 1.710
-BuildRequires:	rpm-pythonprov
-BuildRequires:	sqlite3-devel >= %{sqlite_ver}
-BuildRequires:	unzip
 BuildRequires:	python3-devel
 BuildRequires:	python3-modules
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	sqlite3-devel >= %{sqlite_ver}
+BuildRequires:	unzip
 Requires:	sqlite3 >= %{sqlite_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,7 +50,7 @@ API documentation for %{module}.
 Dokumentacja API %{module}.
 
 %prep
-%setup -q -n %{module}-%{version}-r1
+%setup -q -n %{module}-%{version}
 
 %build
 %py3_build --enable=load_extension %{?with_tests:test}
@@ -72,9 +72,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.rst
+%attr(755,root,root) %{_bindir}/apsw
 %dir %{py3_sitedir}/%{module}
+%{py3_sitedir}/%{module}/__pycache__
 %{py3_sitedir}/%{module}/*.so
+%{py3_sitedir}/%{module}/*.py
 %{py3_sitedir}/%{module}/*.pyi
+%{py3_sitedir}/%{module}/fts_test_strings
 %{py3_sitedir}/%{module}/py.typed
 %{py3_sitedir}/%{module}-%{version}*-py*.egg-info
 
