@@ -8,12 +8,12 @@
 Summary:	Another Python SQLite Wrapper
 Summary(pl.UTF-8):	Another Python SQLite Wrapper - jeszcze jeden pythonowy wrapper dla SQLite
 Name:		python3-%{module}
-Version:	3.49.1.0
+Version:	3.54.1.0
 Release:	1
 License:	Free
 Group:		Libraries/Python
 Source0:	https://github.com/rogerbinns/apsw/releases/download/%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	7cbb9dc1029b29511e00a6f10eea3e69
+# Source0-md5:	0bea7621ef2927777fe9f528c3d6503c
 URL:		http://rogerbinns.github.io/apsw/
 BuildRequires:	python3-devel
 BuildRequires:	python3-modules
